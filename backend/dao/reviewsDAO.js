@@ -7,7 +7,7 @@ const ObjectId = mongodb.ObjectId
 // reference to reviews collection
 let reviews
 
-export default class ReviewsDao {
+export default class ReviewsDAO {
     static async injectDB(conn) {
         if (reviews) {
             return
