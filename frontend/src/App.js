@@ -54,7 +54,10 @@ function App() {
     </div>
     <Routes>
       <Route path="/restaurants" element={<RestaurantsList />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<RestaurantsList />} />
+      <Route path="/login" element={<Login login={login}/>} />
+      <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
+      <Route path="/restaurants/:id/review" element={<AddReview user={user} />} />
     </Routes>
 
     </>
