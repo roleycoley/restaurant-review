@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 
 // our MAIN URL, route is in restaurants file
-app.use("/api/v1/restaurants", restaurants)
+app.use("/api/v1/", restaurants)
 // when a user goes to a route that does not exist
 app.use("*", (req, res) => res.status(404).json({ error: "not found" }))
 

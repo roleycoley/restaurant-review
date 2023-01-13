@@ -9,9 +9,11 @@ const AddReview = props => {
 
   let { id } = useParams()
 
-  if (props.location.state && props.location.state.currentReview) {
+  const location = useLocation()
+
+  if (location.state && location.state.currentReview) {
     editing = true;
-    initialReviewState = props.location.state.currentReview.text
+    initialReviewState = location.state.currentReview.text
   }
 
   const [review, setReview] = useState(initialReviewState);
@@ -31,7 +33,7 @@ const AddReview = props => {
     };
 
     if (editing) {
-      data.review_id = props.location.state.currentReview._id
+      data.review_id = location.state.currentReview._id
       RestaurantDataService.updateReview(data)
         .then(response => {
           setSubmitted(true);
@@ -60,7 +62,7 @@ const AddReview = props => {
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <Link to={`/restaurants/ + ${id}`} className="btn btn-success">
+            <Link to={`/restaurants/${id}`} className="btn btn-success">
               Back to Restaurant
             </Link>
           </div>
