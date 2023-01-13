@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Restaurant = props => {
   const initialRestaurantState = {
@@ -10,6 +10,9 @@ const Restaurant = props => {
     cuisine: "",
     reviews: []
   };
+
+  let { id } = useParams()
+  
   const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
   const getRestaurant = id => {
@@ -70,12 +73,12 @@ const Restaurant = props => {
                        {props.user && props.user.id === review.user_id &&
                           <div className="row">
                             <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
-                            <Link to={{
+                            {/* <Link to={{
                               pathname: "/restaurants/" + props.match.params.id + "/review",
                               state: {
                                 currentReview: review
                               }
-                            }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
+                            }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link> */}
                           </div>                   
                        }
                      </div>

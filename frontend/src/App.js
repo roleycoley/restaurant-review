@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   // default set to null
-  async function login(user = null) {
+  async function login(user) {
     setUser(user);
   }
 
@@ -25,9 +25,9 @@ function App() {
     <>
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
+      <Link to="/restaurants" className="navbar-brand">
           Restaurant Reviews
-        </a>
+        </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to="/restaurants" className="nav-link">

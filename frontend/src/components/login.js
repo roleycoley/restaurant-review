@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Login = props => {
+  let navigate = useNavigate();
 
   const initialUserState = {
     name: "",
@@ -9,14 +11,25 @@ const Login = props => {
 
   const [user, setUser] = useState(initialUserState);
 
+
+  // STUDY
   const handleInputChange = event => {
+    // set name and value variables to form's name and value variables
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
   const login = () => {
-    props.login(user)
-    props.history.push('/');
+    if (user.name !== "" && user.id !== "")
+    {
+      props.login(user)
+      navigate('/');
+    }
+    else
+    {
+      alert("Please fill out all forms.");
+    }
+
   }
 
   return (
@@ -48,9 +61,10 @@ const Login = props => {
           />
         </div>
 
-        <button onClick={login} className="btn btn-success">
-          Login
-        </button>
+          <button onClick={login} className="btn btn-success">
+            Login
+          </button>
+
       </div>
     </div>
   );
