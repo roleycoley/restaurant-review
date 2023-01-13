@@ -27,8 +27,8 @@ const Restaurant = props => {
   };
 
   useEffect(() => {
-    getRestaurant(props.match.params.id);
-  }, [props.match.params.id]);
+    getRestaurant(`${id}`);
+  }, `${id}`);
 
   const deleteReview = (reviewId, index) => {
     RestaurantDataService.deleteReview(reviewId, props.user.id)
@@ -54,7 +54,7 @@ const Restaurant = props => {
             <strong>Cuisine: </strong>{restaurant.cuisine}<br/>
             <strong>Address: </strong>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.zipcode}
           </p>
-          <Link to={"/restaurants/" + props.match.params.id + "/review"} className="btn btn-primary">
+          <Link to={`/restaurants/${id}/review`} className="btn btn-primary">
             Add Review
           </Link>
           <h4> Reviews </h4>
@@ -73,12 +73,12 @@ const Restaurant = props => {
                        {props.user && props.user.id === review.user_id &&
                           <div className="row">
                             <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
-                            {/* <Link to={{
-                              pathname: "/restaurants/" + props.match.params.id + "/review",
-                              state: {
+                            <Link to={
+                              `/restaurants/${id}/review`}
+                              state={{
                                 currentReview: review
-                              }
-                            }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link> */}
+                              }}
+                             className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
                           </div>                   
                        }
                      </div>

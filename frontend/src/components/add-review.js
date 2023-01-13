@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import RestaurantDataService from "../services/restaurant";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 const AddReview = props => {
   let initialReviewState = ""
 
   let editing = false;
+
+  let { id } = useParams()
 
   if (props.location.state && props.location.state.currentReview) {
     editing = true;
@@ -24,7 +26,8 @@ const AddReview = props => {
       text: review,
       name: props.user.name,
       user_id: props.user.id,
-      restaurant_id: props.match.params.id
+      // check
+      restaurant_id: id
     };
 
     if (editing) {
@@ -57,7 +60,7 @@ const AddReview = props => {
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <Link to={"/restaurants/" + props.match.params.id} className="btn btn-success">
+            <Link to={`/restaurants/ + ${id}`} className="btn btn-success">
               Back to Restaurant
             </Link>
           </div>
