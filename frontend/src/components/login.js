@@ -11,7 +11,6 @@ const Login = props => {
 
   const [user, setUser] = useState(initialUserState);
 
-
   // STUDY
   const handleInputChange = event => {
     // set name and value variables to form's name and value variables
@@ -35,7 +34,7 @@ const Login = props => {
   return (
     <div className="submit-form">
       <div>
-        <div className="form-group">
+        <div className="form-group w-25">
           <label htmlFor="user">Username</label>
           <input
             type="text"
@@ -48,7 +47,7 @@ const Login = props => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="form-group w-25">
           <label htmlFor="id">ID</label>
           <input
             type="text"

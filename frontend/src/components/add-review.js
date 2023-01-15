@@ -28,7 +28,6 @@ const AddReview = props => {
       text: review,
       name: props.user.name,
       user_id: props.user.id,
-      // check
       restaurant_id: id
     };
 

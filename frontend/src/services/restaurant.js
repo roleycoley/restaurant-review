@@ -2,6 +2,12 @@ import http from "../http-common";
 
 
 // where we make api calls and return info from api calls
+// these strings are added to the end of backend server.js url
+// front end url is different from backend
+// notice how urls with a / bring you to a specific route
+// these methods are called by components and can be given arguments
+// needs to be imported
+
 class RestaurantDataService {
     getAll(page = 0) {
         return http.get(`?page=${page}`);
@@ -27,7 +33,7 @@ class RestaurantDataService {
         return http.delete(`/review?id=${id}`, {data:{user_id: userId}})
     }
 
-    getCuisines(id) {
+    getCuisines() {
         return http.get(`/cuisines`);
     }
 }

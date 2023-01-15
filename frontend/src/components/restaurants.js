@@ -26,6 +26,7 @@ const Restaurant = props => {
       });
   };
 
+  // how we find a unique restaurant review page
   useEffect(() => {
     getRestaurant(`${id}`);
   }, `${id}`);
