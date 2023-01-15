@@ -129,10 +129,12 @@ export default class RestaurantsDAO {
           throw e
         }
       }
-    
+      
+      // returns an array of cuisines. Each cuisine is unique
       static async getCuisines() {
         let cuisines = []
         try {
+            // .distinct() takes away duplicates
           cuisines = await restaurants.distinct("cuisine")
           return cuisines
         } catch (e) {
