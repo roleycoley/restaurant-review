@@ -36,6 +36,10 @@ class RestaurantDataService {
     getCuisines() {
         return http.get(`/cuisines`);
     }
+
+    getZipcodes() {
+        return http.get(`/zipcodes`);
+    }
 }
 
 export default new RestaurantDataService();

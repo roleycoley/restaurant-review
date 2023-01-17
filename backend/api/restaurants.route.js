@@ -9,6 +9,7 @@ router.route("/").get(RestaurantsCtrl.apiGetRestaurants)
 router.route("/id/:id").get(RestaurantsCtrl.apiGetRestaurantById)
 // gets a list of all cuisines
 router.route("/cuisines").get(RestaurantsCtrl.apiGetRestaurantCuisines)
+router.route("/zipcodes").get(RestaurantsCtrl.apiGetRestaurantZipcodes)
 
 router
     .route("/review")

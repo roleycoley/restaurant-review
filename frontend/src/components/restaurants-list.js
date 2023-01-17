@@ -9,10 +9,14 @@ export default function RestaurantsList() {
   const [searchZip, setSearchZip ] = useState("");
   const [searchCuisine, setSearchCuisine ] = useState("");
   const [cuisines, setCuisines] = useState(["All Cuisines"]);
+  const [zipcodes, setZipcodes] = useState(["All Zipcodes"]);
+  const [currentPage, setPage] = useState(0);
+
 
   useEffect(() => {
     retrieveRestaurants();
     retrieveCuisines();
+    retrieveZipcodes();
   }, []);
 
   const onChangeSearchName = e => {
@@ -48,7 +52,17 @@ export default function RestaurantsList() {
       .then(response => {
         console.log(response.data);
         setCuisines(["All Cuisines"].concat(response.data));
-        
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const retrieveZipcodes = () => {
+    RestaurantDataService.getZipcodes()
+      .then(response => {
+        console.log(response.data);
+        setZipcodes(["All Zipcodes"].concat(response.data));
       })
       .catch(e => {
         console.log(e);
@@ -125,8 +139,27 @@ export default function RestaurantsList() {
             </button>
           </div>
         </div>
-        <div className="input-group col-lg-4">
 
+        <div className="input-group col-lg-4">
+          <select onChange={onChangeSearchZip}>
+             {zipcodes.map(zipcode => {
+               return (
+                 <option value={zipcode}> {zipcode} </option>
+               )
+             })}
+          </select>
+          <div className="input-group-append">
+            <button
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={findByZip}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+        
+        <div className="input-group col-lg-4">
           <select onChange={onChangeSearchCuisine}>
              {cuisines.map(cuisine => {
                return (
@@ -143,7 +176,6 @@ export default function RestaurantsList() {
               Search
             </button>
           </div>
-
         </div>
       </div>
       <div className="row">

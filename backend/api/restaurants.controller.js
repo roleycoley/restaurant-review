@@ -56,4 +56,14 @@ export default class RestaurantsController {
             res.status(500).json({ error: e })
         }
     }
+
+    static async apiGetRestaurantZipcodes(req, res, next) {
+        try {
+            let zipcodes = await RestaurantsDAO.getZipcodes()
+            res.json(zipcodes)
+        } catch (e) {
+            console.log(`api, ${e}`)
+            res.status(500).json({ error: e })
+        }
+    }
 }
