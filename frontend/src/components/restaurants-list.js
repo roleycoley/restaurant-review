@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link } from "react-router-dom";
+import { ceil } from 'mathjs'
+
 
 export default function RestaurantsList() {
   // variables for all things people are searching for
@@ -10,14 +12,29 @@ export default function RestaurantsList() {
   const [searchCuisine, setSearchCuisine ] = useState("");
   const [cuisines, setCuisines] = useState(["All Cuisines"]);
   const [zipcodes, setZipcodes] = useState(["All Zipcodes"]);
+  const [totalReturned, setTotalReturned] = useState(0)
   const [currentPage, setPage] = useState(0);
-
 
   useEffect(() => {
     retrieveRestaurants();
     retrieveCuisines();
     retrieveZipcodes();
   }, []);
+
+  const findMaxPages = returnedRestaurants => {
+    let pages
+
+    pages = Math.ceil(returnedRestaurants / 20)
+
+    // first page is page 0, so we subtract 1
+    pages -= 1
+
+    return pages
+  }
+
+  const maxPages = useMemo(() => {
+    return findMaxPages(totalReturned)
+  }, [totalReturned])
 
   const onChangeSearchName = e => {
     const searchName = e.target.value;
@@ -32,15 +49,15 @@ export default function RestaurantsList() {
   const onChangeSearchCuisine = e => {
     const searchCuisine = e.target.value;
     setSearchCuisine(searchCuisine);
-    
   };
 
-  const retrieveRestaurants = () => {
-    RestaurantDataService.getAll()
+  const retrieveRestaurants = (page = 0) => {
+    RestaurantDataService.getAll(page)
       .then(response => {
         console.log(response.data);
+        // if you try to console.log these they will not return anything
         setRestaurants(response.data.restaurants);
-        
+        setTotalReturned(response.data.total_results);
       })
       .catch(e => {
         console.log(e);
@@ -101,6 +118,8 @@ export default function RestaurantsList() {
   };
 
   return (
+    <>
+    
     <div>
       <div className="row pb-1">
         <div className="input-group col-lg-4">
@@ -201,9 +220,24 @@ export default function RestaurantsList() {
             </div>
           );
         })}
-
-
       </div>
     </div>
+    <div class="page-container">
+        <div>
+          {"<"}
+        </div>
+          
+        <div>
+        {currentPage + 1} YAYYYYY
+        </div>
+
+        <div>
+        {">"}
+        </div>
+  
+    </div>
+
+
+    </>
   );
 };

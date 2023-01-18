@@ -4,7 +4,7 @@ import "./styles.css";
 
 import React, { useState } from "react";
 
-
+import Home from "./components/home";
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
@@ -26,8 +26,8 @@ function App() {
     <>
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <Link to="/restaurants" className="navbar-brand">
-          Restaurant Reviews
+      <Link to="/" className="navbar-brand">
+          Home
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -55,7 +55,7 @@ function App() {
     </div>
     <Routes>
       <Route path="/restaurants" element={<RestaurantsList />} />
-      <Route path="/" element={<RestaurantsList />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login login={login}/>} />
       <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
       <Route path="/restaurants/:id/review" element={<AddReview user={user} />} />
