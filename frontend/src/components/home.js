@@ -18,7 +18,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div style={{ padding: "30px" }}>
+      <div style={{ padding: "30px", background:"white" }}>
         <div
           style={{
             fontSize: "40px",
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <div className="description">
               Was the food good? Help others out by leaving a comment/review on
-              a restaurant!
+              a restaurant! Must login first.
             </div>
           </div>
         </div>

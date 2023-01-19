@@ -1,5 +1,5 @@
 import { Link, Routes, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
 import React, { useState } from "react";
@@ -24,43 +24,36 @@ function App() {
 
   return (
     <>
-    <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <Link to="/" className="navbar-brand">
-          Home
-        </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to="/restaurants" className="nav-link">
-              Restaurants
-            </Link>
-          </li>
-          <li className="nav-item">
-            {user ? (
-              <a
-                onClick={logout}
-                className="nav-link"
-                style={{ cursor: "pointer" }}
-              >
-                Logout {user.name}
-              </a>
-            ) : (
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            )}
-          </li>
-        </div>
-      </nav>
-    </div>
-    <Routes>
-      <Route path="/restaurants" element={<RestaurantsList />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login login={login}/>} />
-      <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
-      <Route path="/restaurants/:id/review" element={<AddReview user={user} />} />
-    </Routes>
+      <div className="navbar">
+        <div className="navbar-sections">
+          <Link to="/restaurants" className="nav-link">
+            <button>Search</button>
+          </Link>
 
+          <Link to="/">
+            <button style={{ fontSize: "35px" }}>Home</button>
+          </Link>
+          {user ? (
+            <button onClick={logout}>Logout</button>
+          ) : (
+            <Link to="/login" className="nav-link">
+              <button>Login</button>
+            </Link>
+          )}
+
+          {user && <div className="username"> </div>}
+        </div>
+      </div>
+      <Routes>
+        <Route path="/restaurants" element={<RestaurantsList />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login login={login} />} />
+        <Route path="/restaurants/:id" element={<Restaurant user={user} />} />
+        <Route
+          path="/restaurants/:id/review"
+          element={<AddReview user={user} />}
+        />
+      </Routes>
     </>
   );
 }
