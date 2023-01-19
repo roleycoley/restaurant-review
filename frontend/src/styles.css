@@ -105,12 +105,27 @@ body {
     color: white;
 }
 
-.white-button:hover {
+.red-button:hover {
     background: hsl(0, 100%, 29%);
 }
 
 .white-button:hover {
     background: rgb(241, 241, 241);
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 380px);
+    justify-content:center;
+    grid-gap:40px;
+
+}
+
+.restaurant-card {
+    background:white;
+    padding:20px;
+    border: solid 1px lightgray;
+    border-radius:5px;
 }
 
 

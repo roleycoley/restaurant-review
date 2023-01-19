@@ -131,7 +131,7 @@ export default function RestaurantsList() {
             />
             <div className="input-group-append">
               <button
-                className="btn btn-outline-secondary"
+                className="white-button"
                 type="button"
                 onClick={findByName}
               >
@@ -149,7 +149,7 @@ export default function RestaurantsList() {
             />
             <div className="input-group-append">
               <button
-                className="btn btn-outline-secondary"
+                className="white-button"
                 type="button"
                 onClick={findByZip}
               >
@@ -166,7 +166,7 @@ export default function RestaurantsList() {
             </select>
             <div className="input-group-append">
               <button
-                className="btn btn-outline-secondary"
+                className="white-button"
                 type="button"
                 onClick={findByZip}
               >
@@ -185,7 +185,7 @@ export default function RestaurantsList() {
             </select>
             <div className="input-group-append">
               <button
-                className="btn btn-outline-secondary"
+                className="white-button"
                 type="button"
                 onClick={findByCuisine}
               >
@@ -194,10 +194,10 @@ export default function RestaurantsList() {
             </div>
           </div>
         </div>
-        <div className="row">
-          {restaurants.map(restaurant => {
+        <div className="restaurant-grid">
+          {restaurants.map((restaurant) => {
             const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
-            return <RestaurantCard address={address} restaurant={restaurant} />
+            return <RestaurantCard address={address} restaurant={restaurant} />;
           })}
         </div>
       </div>
