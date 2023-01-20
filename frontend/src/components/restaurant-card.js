@@ -11,9 +11,19 @@ export default function RestaurantCard({ address, restaurant }) {
         <strong>Address: </strong>
         {address}
       </p>
-      <div style={{ display: "flex",  justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+          marginTop: "auto",
+        }}
+      >
         <Link to={"/restaurants/" + restaurant._id}>
-          <button style={{ width: "150px", height:"40px" }} className="red-button">
+          <button
+            style={{ width: "175px", height: "40px" }}
+            className="red-button"
+          >
             View Reviews
           </button>
         </Link>
@@ -21,7 +31,12 @@ export default function RestaurantCard({ address, restaurant }) {
           target="_blank"
           href={"https://www.google.com/maps/place/" + address}
         >
-          <button style={{ width: "150px", height:"40px" }} className="red-button">View Map</button>
+          <button
+            style={{ width: "175px", height: "40px" }}
+            className="red-button"
+          >
+            View Map
+          </button>
         </a>
       </div>
     </div>

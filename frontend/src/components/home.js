@@ -9,7 +9,6 @@ export default function Home() {
             color: "white",
             marginTop: "30px",
             fontSize: "60px",
-            fontFamily: "Libre Baskerville",
             letterSpacing: "5px",
             fontStyle: "italic",
           }}
@@ -22,7 +21,6 @@ export default function Home() {
         <div
           style={{
             fontSize: "40px",
-            fontFamily: "Libre Baskerville",
             letterSpacing: "2px",
             textAlign: "center",
           }}
@@ -32,7 +30,6 @@ export default function Home() {
         <div
           style={{
             fontSize: "25px",
-            fontFamily: "Libre Baskerville",
             letterSpacing: "2px",
             textAlign: "center",
             color: "darkgray",

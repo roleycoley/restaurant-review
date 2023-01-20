@@ -37,7 +37,7 @@ export default class RestaurantsDAO {
     filters = null,
     // default page number
     page = 0,
-    restaurantsPerPage = 20,
+    restaurantsPerPage = 18,
   }) {
     // query is empty unless get restaurant is called with filters
     let query;

@@ -118,89 +118,65 @@ export default function RestaurantsList() {
   };
 
   return (
-    <>
-      <div>
-        <div className="row pb-1">
-          <div className="input-group col-lg-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by name"
-              value={searchName}
-              onChange={onChangeSearchName}
-            />
-            <div className="input-group-append">
-              <button
-                className="white-button"
-                type="button"
-                onClick={findByName}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-          <div className="input-group col-lg-4">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by zip"
-              value={searchZip}
-              onChange={onChangeSearchZip}
-            />
-            <div className="input-group-append">
-              <button
-                className="white-button"
-                type="button"
-                onClick={findByZip}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-
-          <div className="input-group col-lg-4">
-            <select onChange={onChangeSearchZip}>
-              {zipcodes.map((zipcode) => {
-                return <option value={zipcode}> {zipcode} </option>;
-              })}
-            </select>
-            <div className="input-group-append">
-              <button
-                className="white-button"
-                type="button"
-                onClick={findByZip}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-
-          <div className="input-group col-lg-4">
-            <select onChange={onChangeSearchCuisine}>
-              {cuisines.map((cuisine) => {
-                return (
-                  <option value={cuisine}> {cuisine.substr(0, 20)} </option>
-                );
-              })}
-            </select>
-            <div className="input-group-append">
-              <button
-                className="white-button"
-                type="button"
-                onClick={findByCuisine}
-              >
-                Search
-              </button>
-            </div>
+    <div style={{ padding: "40px" }}>
+      <div className="restaurant-grid">
+        <div className="input-section">
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={searchName}
+            onChange={onChangeSearchName}
+            style={{padding:"5px"}}
+          />
+          <div className="input-group-append">
+            <button
+              className="white-button search-button"
+              type="button"
+              onClick={findByName}
+            >
+              Search
+            </button>
           </div>
         </div>
-        <div className="restaurant-grid">
-          {restaurants.map((restaurant) => {
-            const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
-            return <RestaurantCard address={address} restaurant={restaurant} />;
-          })}
+
+        <div className="input-section">
+          <select style={{ padding: "5px" }} onChange={onChangeSearchZip}>
+            {zipcodes.map((zipcode) => {
+              return <option value={zipcode}> {zipcode} </option>;
+            })}
+          </select>
+          <div className="input-group-append">
+            <button
+              className="white-button search-button"
+              type="button"
+              onClick={findByZip}
+            >
+              Search
+            </button>
+          </div>
         </div>
+
+        <div className="input-section">
+          <select style={{ padding: "5px" }} onChange={onChangeSearchCuisine}>
+            {cuisines.map((cuisine) => {
+              return <option value={cuisine}> {cuisine.substr(0, 20)} </option>;
+            })}
+          </select>
+          <div className="input-group-append">
+            <button
+              className="white-button search-button"
+              type="button"
+              onClick={findByCuisine}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+        {restaurants.map((restaurant) => {
+          const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
+          return <RestaurantCard address={address} restaurant={restaurant} />;
+        })}
       </div>
-    </>
+    </div>
   );
 }
