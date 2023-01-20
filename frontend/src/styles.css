@@ -3,6 +3,14 @@ body {
   background: hsl(0, 100%, 33%);
 }
 
+.username {
+    color: white;
+    font-size: 25px;
+    letter-spacing: 2px;
+    position:absolute;
+    right:20px;
+}
+
 .flexbox-title {
   display: flex;
   flex-direction: column;
@@ -55,6 +63,7 @@ body {
   justify-content: center;
   background: rgb(30, 30, 30);
   font-family: "Libre Baskerville";
+  position:relative;
 }
 
 .navbar-sections {
@@ -66,8 +75,8 @@ body {
 
 .navbar button {
   border: none;
-  color: white;
   background: rgb(30, 30, 30);
+  color: white;
   font-size: 25px;
   letter-spacing: 2px;
   transition: 0.25s;

@@ -78,7 +78,12 @@ const Restaurant = (props) => {
                     {restaurant.address.zipcode}
                   </div>
                 </div>
-                <Link to={`/restaurants/${id}/review`}>
+                <Link
+                  to={`/restaurants/${id}/review`}
+                  state={{
+                    restaurantName: restaurant.name,
+                  }}
+                >
                   <button
                     className="red-button"
                     style={{ width: "300px", height: "50px", fontSize: "20px" }}
@@ -119,22 +124,36 @@ const Restaurant = (props) => {
                             {review.date}
                           </p>
                           {props.user && props.user.id === review.user_id && (
-                            <div className="row">
-                              <a
+                            <div
+                              style={{
+                                display: "flex",
+                                gap: "5%",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <button
+                                style={{ width: "45%" }}
+                                className="red-button"
+                              >
+                                <Link
+                                  to={`/restaurants/${id}/review`}
+                                  state={{
+                                    currentReview: review,
+                                    restaurantName: restaurant.name,
+                                  }}
+                                  className="nav-link"
+                                >
+                                  Edit
+                                </Link>
+                              </button>
+
+                              <button
                                 onClick={() => deleteReview(review._id, index)}
-                                className="btn btn-primary col-lg-5 mx-1 mb-1"
+                                className="red-button"
+                                style={{ width: "45%" }}
                               >
                                 Delete
-                              </a>
-                              <Link
-                                to={`/restaurants/${id}/review`}
-                                state={{
-                                  currentReview: review,
-                                }}
-                                className="btn btn-primary col-lg-5 mx-1 mb-1"
-                              >
-                                Edit
-                              </Link>
+                              </button>
                             </div>
                           )}
                         </div>

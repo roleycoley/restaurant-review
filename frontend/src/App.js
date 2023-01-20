@@ -4,11 +4,11 @@ import "./styles.css";
 
 import React, { useState } from "react";
 
-import Home from "./components/home";
-import AddReview from "./components/add-review";
-import Restaurant from "./components/restaurants";
-import RestaurantsList from "./components/restaurants-list";
-import Login from "./components/login";
+import Home from "./components/home-page";
+import AddReview from "./components/restaurant-review-page";
+import Restaurant from "./components/restaurant-page";
+import RestaurantsList from "./components/restaurants-list-page";
+import Login from "./components/login-page";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -41,7 +41,7 @@ function App() {
             </Link>
           )}
 
-          {user && <div className="username"> </div>}
+          {user && <div className="username"> User: {user.name} </div>}
         </div>
       </div>
       <Routes>

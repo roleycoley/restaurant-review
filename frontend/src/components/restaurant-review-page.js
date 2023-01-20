@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { columnTransformDependencies } from "mathjs";
+import restaurant from "../services/restaurant";
 
 const AddReview = (props) => {
   let initialReviewState = "";
@@ -16,6 +17,8 @@ const AddReview = (props) => {
     editing = true;
     initialReviewState = location.state.currentReview.text;
   }
+
+  let restaurantName = location.state.restaurantName;
 
   const [review, setReview] = useState(initialReviewState);
   const [submitted, setSubmitted] = useState(false);
@@ -64,20 +67,50 @@ const AddReview = (props) => {
                 padding: "20px",
                 color: "white",
                 letterSpacing: "2px",
-                fontSize: "30px",
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center",
+                gap: "20px",
               }}
             >
-              <div>Review submitted successfully!</div>
-              <Link to={`/restaurants/${id}`} className="white-button">
-                Back to Restaurant
-              </Link>
+              <div style={{ fontSize: "30px" }}>
+                <em>Your review was submitted successfully!</em>
+              </div>
+              <button
+                style={{ height: "40px", width: "20%", fontSize: "20px" }}
+                className="white-button"
+              >
+                <Link to={`/restaurants/${id}`} className="nav-link">
+                  Back to Restaurant
+                </Link>
+              </button>
             </div>
           ) : (
-            <div>
-              <div className="form-group">
-                <label htmlFor="description">
+            <div style={{ padding: "40px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    color: "white",
+                    fontSize: "40px",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  <em>{restaurantName}</em>
+                </div>
+                <label
+                  style={{
+                    color: "white",
+                    fontSize: "20px",
+                    letterSpacing: "1px",
+                  }}
+                  htmlFor="description"
+                >
                   {editing ? "Edit" : "Create"} Review
                 </label>
                 <input
@@ -89,10 +122,14 @@ const AddReview = (props) => {
                   onChange={handleInputChange}
                   name="text"
                 />
+                <button
+                  style={{ margin: "auto", width: "20%", height: "50px" }}
+                  onClick={saveReview}
+                  className="white-button"
+                >
+                  Submit
+                </button>
               </div>
-              <button onClick={saveReview} className="btn btn-success">
-                Submit
-              </button>
             </div>
           )}
         </div>
