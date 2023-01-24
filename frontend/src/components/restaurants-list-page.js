@@ -12,6 +12,7 @@ export default function RestaurantsList() {
   const [cuisines, setCuisines] = useState(["All Cuisines"]);
   const [zipcodes, setZipcodes] = useState(["All Zipcodes"]);
   const [totalReturned, setTotalReturned] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setPage] = useState(0);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function RestaurantsList() {
         // if you try to console.log these they will not return anything
         setRestaurants(response.data.restaurants);
         setTotalReturned(response.data.total_results);
+        setIsLoading(false);
       })
       .catch((e) => {
         console.log(e);
@@ -174,11 +176,36 @@ export default function RestaurantsList() {
             </button>
           </div>
         </div>
+
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
           return <RestaurantCard address={address} restaurant={restaurant} />;
         })}
       </div>
+      {isLoading && (
+        <div style={{ display: "flex", justifyContent: "center", flexDirection:"column" }}>
+          <div
+            style={{
+              color: "white",
+              fontSize: "50px",
+              textAlign: "center",
+              letterSpacing:"2px"
+            }}
+          >
+            <em>Loading Restaurants! </em>
+          </div>
+          <div
+            style={{
+              color: "white",
+              fontSize: "30px",
+              textAlign: "center",
+              letterSpacing:"2px"
+            }}
+          >
+            <em>Please be patient :{")"} </em>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
