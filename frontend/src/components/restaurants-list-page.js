@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import RestaurantDataService from "../services/restaurant";
 
-import { ceil } from "mathjs";
 import RestaurantCard from "./restaurant-card";
 
 export default function RestaurantsList() {
@@ -106,7 +105,11 @@ export default function RestaurantsList() {
   };
 
   const findByZip = () => {
-    find(searchZip, "zipcode");
+    if (searchZip == "All Zipcodes") {
+      refreshList();
+    } else {
+      find(searchZip, "zipcode");
+    }
   };
 
   const findByCuisine = () => {
@@ -120,15 +123,15 @@ export default function RestaurantsList() {
   return (
     <div style={{ padding: "40px" }}>
       <div className="restaurant-grid">
-        <div className="input-section">
-          <input
-            type="text"
-            placeholder="Search by name"
-            value={searchName}
-            onChange={onChangeSearchName}
-            style={{padding:"5px"}}
-          />
-          <div className="input-group-append">
+        <div className="input-section-container">
+          <div className="input-section">
+            <input
+              type="text"
+              placeholder="Search by name"
+              value={searchName}
+              onChange={onChangeSearchName}
+              style={{ padding: "5px" }}
+            />
             <button
               className="white-button search-button"
               type="button"
@@ -137,15 +140,14 @@ export default function RestaurantsList() {
               Search
             </button>
           </div>
-        </div>
 
-        <div className="input-section">
-          <select style={{ padding: "5px" }} onChange={onChangeSearchZip}>
-            {zipcodes.map((zipcode) => {
-              return <option value={zipcode}> {zipcode} </option>;
-            })}
-          </select>
-          <div className="input-group-append">
+          <div className="input-section">
+            <select style={{ padding: "5px" }} onChange={onChangeSearchZip}>
+              {zipcodes.map((zipcode) => {
+                return <option value={zipcode}> {zipcode} </option>;
+              })}
+            </select>
+
             <button
               className="white-button search-button"
               type="button"
@@ -154,15 +156,15 @@ export default function RestaurantsList() {
               Search
             </button>
           </div>
-        </div>
 
-        <div className="input-section">
-          <select style={{ padding: "5px" }} onChange={onChangeSearchCuisine}>
-            {cuisines.map((cuisine) => {
-              return <option value={cuisine}> {cuisine.substr(0, 20)} </option>;
-            })}
-          </select>
-          <div className="input-group-append">
+          <div className="input-section">
+            <select style={{ padding: "5px" }} onChange={onChangeSearchCuisine}>
+              {cuisines.map((cuisine) => {
+                return (
+                  <option value={cuisine}> {cuisine.substr(0, 20)} </option>
+                );
+              })}
+            </select>
             <button
               className="white-button search-button"
               type="button"

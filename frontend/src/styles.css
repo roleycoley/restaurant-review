@@ -144,11 +144,23 @@ body {
 
 }
 
+.input-section-container {
+  grid-column: 1 / -1;
+  display: flex;
+  gap:max(30px);
+  justify-content:center;
+  
+}
+
 .input-section {
     display:flex;
-    gap:20px;
-
+    gap:10px;
+    width:30%;
+    flex-direction:column;
+    align-items:center;
 }
+
+
 
 .input-section *{
     width:100%;
@@ -157,6 +169,7 @@ body {
 
 .search-button {
     font-size:20px;
+    width:max(100px,100%);
 }
 
 .restaurant-page-info {

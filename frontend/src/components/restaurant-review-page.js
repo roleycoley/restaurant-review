@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link, useParams, useLocation } from "react-router-dom";
-import { columnTransformDependencies } from "mathjs";
 import restaurant from "../services/restaurant";
 
 const AddReview = (props) => {
