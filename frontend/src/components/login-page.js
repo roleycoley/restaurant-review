@@ -29,7 +29,7 @@ const Login = (props) => {
 
   return (
     <div class="login-page">
-      <div style={{ fontSize: "50px", letterSpacing: "2px" }}>
+      <div style={{ fontSize: "50px", letterSpacing: "2px", textAlign: "center" }}>
         <em>It's nice to meet you!</em>
       </div>
 

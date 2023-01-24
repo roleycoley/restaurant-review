@@ -183,23 +183,27 @@ export default function RestaurantsList() {
         })}
       </div>
       {isLoading && (
-        <div style={{ display: "flex", justifyContent: "center", flexDirection:"column" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            textAlign: "center",
+            letterSpacing: "2px",
+            color: "white",
+            marginTop:"10px"
+          }}
+        >
           <div
             style={{
-              color: "white",
               fontSize: "50px",
-              textAlign: "center",
-              letterSpacing:"2px"
             }}
           >
             <em>Loading Restaurants! </em>
           </div>
           <div
             style={{
-              color: "white",
               fontSize: "30px",
-              textAlign: "center",
-              letterSpacing:"2px"
             }}
           >
             <em>Please be patient :{")"} </em>
