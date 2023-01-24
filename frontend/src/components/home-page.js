@@ -11,6 +11,7 @@ export default function Home() {
             fontSize: "60px",
             letterSpacing: "5px",
             fontStyle: "italic",
+            textAlign: "center"
           }}
         >
           Let's Eat!
